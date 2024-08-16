@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Model } from '../../models/entities/model.entity';
 import { Team } from '../../teams/entities/team.entity';
 
 @Entity('Projects')
@@ -25,4 +26,7 @@ export class Project {
         inverseJoinColumn: { name: 'team_id', referencedColumnName: 'id' }
     })
     teams: Team[];
+
+    @OneToMany(() => Model, model => model.project)
+    models: Model[];
 }
