@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Team } from '../../teams/entities/team.entity';
 
 @Entity({name: 'Users' })
 export class User {
@@ -19,4 +20,7 @@ export class User {
 
     @UpdateDateColumn({ type: 'timestamp' })
     updated_at: Date;
+
+    @ManyToMany(() => Team, team => team.users)
+    teams: Team[];
 }
