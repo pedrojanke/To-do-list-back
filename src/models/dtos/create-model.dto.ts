@@ -1,6 +1,5 @@
 export class CreateModelDto {
     name: string;
-    project_id: number;
-    item_id: number[];
+    projectId: number;
     created_at: Date;
 }
