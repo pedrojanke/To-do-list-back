@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Model } from './models/entities/model.entity';
+import { ModelsModule } from './models/models.module';
 import { Project } from './projects/entities/project.entity';
 import { ProjectsModule } from './projects/projects.module';
 import { Team } from './teams/entities/team.entity';
@@ -16,13 +18,13 @@ import { UsersModule } from './users/users.module';
       username: 'root',
       password: 'root',
       database: 'todolist',
-      entities: [User, Team, Project],
+      entities: [User, Team, Project, Model],
       synchronize: true,
   }),
   UsersModule,
   TeamsModule,
   ProjectsModule,
-  
+  ModelsModule
 ],
 })
 export class AppModule {}
