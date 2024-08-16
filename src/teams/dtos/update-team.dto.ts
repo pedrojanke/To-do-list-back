@@ -1,5 +1,5 @@
 export class UpdateTeamDto {
     name?: string;
-    userIds?: number[];
+    user_id?: number[];
     updated_at: Date;
 }

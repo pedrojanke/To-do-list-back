@@ -1,5 +1,5 @@
 export class CreateTeamDto {
     name: string;
-    userIds: number[];
+    user_id: number[];
     created_at: Date;
 }
