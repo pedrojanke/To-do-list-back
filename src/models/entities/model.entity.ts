@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Item } from '../../items/entities/item.entity';
 import { Project } from '../../projects/entities/project.entity';
 
 @Entity('Models')
@@ -17,4 +18,7 @@ export class Model {
 
     @ManyToOne(() => Project, project => project.models, { nullable: false })
     project: Project;
+
+    @OneToMany(() => Item, item => item.model)
+    items: Item[];
 }
