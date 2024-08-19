@@ -1,6 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToMany, JoinTable } from 'typeorm';
-import { User } from '../../users/entities/user.entity';
+import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { Project } from '../../projects/entities/project.entity';
+import { User } from '../../users/entities/user.entity';
 
 @Entity('Teams')
 export class Team {
@@ -17,6 +17,10 @@ export class Team {
         inverseJoinColumn: { name: 'user_id', referencedColumnName: 'id' }
     })
     users: User[];
+
+    @ManyToOne(() => User, { nullable: false })
+    @JoinColumn({ name: 'owner_id' })
+    owner: User;
 
     @CreateDateColumn({ type: 'timestamp' })
     created_at: Date;
