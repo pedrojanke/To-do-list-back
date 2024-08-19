@@ -6,13 +6,13 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 255, nullable: false })
+    @Column({ length: 150, nullable: false })
     name: string;
 
-    @Column({ length: 255, unique: true, nullable: false })
+    @Column({ length: 120, unique: true, nullable: false })
     email: string;
 
-    @Column({ length: 255, nullable: false })
+    @Column({ length: 16, nullable: false })
     password: string;
 
     @CreateDateColumn({ type: 'timestamp' })
