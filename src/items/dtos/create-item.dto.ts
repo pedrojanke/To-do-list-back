@@ -1,6 +1,6 @@
 export class CreateItemDto {
-    name: string;
-    checked: boolean;
-    modelId: number;
-    created_at: Date;
+  name: string;
+  checked: boolean;
+  model_id: number;
+  created_at: Date;
 }

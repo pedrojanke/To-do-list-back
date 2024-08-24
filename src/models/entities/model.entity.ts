@@ -1,24 +1,34 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Item } from '../../items/entities/item.entity';
 import { Project } from '../../projects/entities/project.entity';
 
 @Entity('Models')
 export class Model {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({ length: 255, nullable: false })
-    name: string;
+  @Column({ length: 255, nullable: false })
+  name: string;
 
-    @CreateDateColumn({type: 'timestamp'})
-    created_at: Date;
+  @CreateDateColumn({ type: 'timestamp' })
+  created_at: Date;
 
-    @UpdateDateColumn({type: 'timestamp'})
-    updated_at: Date;
+  @UpdateDateColumn({ type: 'timestamp' })
+  updated_at: Date;
 
-    @ManyToOne(() => Project, project => project.models, { nullable: false })
-    project: Project;
+  @ManyToOne(() => Project, (project) => project.models, { nullable: false })
+  @JoinColumn({ name: 'project_id' })
+  project: Project;
 
-    @OneToMany(() => Item, item => item.model)
-    items: Item[];
+  @OneToMany(() => Item, (item) => item.model)
+  items: Item[];
 }

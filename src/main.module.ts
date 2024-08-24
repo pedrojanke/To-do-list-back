@@ -13,21 +13,21 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-  TypeOrmModule.forRoot({
+    TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: 'mysql',
       database: 'todolist',
       entities: [User, Team, Project, Model, Item],
       synchronize: true,
-  }),
-  UsersModule,
-  TeamsModule,
-  ProjectsModule,
-  ModelsModule,
-  ItemsModule,
-],
+    }),
+    UsersModule,
+    TeamsModule,
+    ProjectsModule,
+    ModelsModule,
+    ItemsModule,
+  ],
 })
 export class AppModule {}
