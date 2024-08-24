@@ -1,7 +1,6 @@
 export class UpdateProjectDto {
-    name?: string;
-    description?: string;
-    team_id?: number[];
-    model_id?: number[];
-    updated_at: Date;
+  name?: string;
+  description?: string;
+  team_id?: number[];
+  model_id?: number[];
 }
