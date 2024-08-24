@@ -16,7 +16,7 @@ export class ItemsService {
   ) {}
 
   async create(createItemDto: CreateItemDto): Promise<Item> {
-    const { name, checked, model_id } = createItemDto;
+    const { name, model_id } = createItemDto;
 
     // Busca o modelo
     const modelSelected = await this.modelRepository.findOneBy({
@@ -29,7 +29,6 @@ export class ItemsService {
     // Cria o item e associa ao modelo
     const item = this.itemRepository.create({
       name,
-      checked,
       model: modelSelected,
       created_at: new Date(),
       updated_at: new Date(),
