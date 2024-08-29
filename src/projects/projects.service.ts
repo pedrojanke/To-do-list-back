@@ -16,19 +16,23 @@ export class ProjectsService {
   ) {}
 
   async create(createProjectDto: CreateProjectDto): Promise<Project> {
-    const { name, description, team_id } = createProjectDto;
+    const { 
+      name, 
+      description, 
+      // team_id 
+    } = createProjectDto;
 
     // Busca os times a serem associados ao projeto
-    const teams = await this.teamRepository.findByIds(team_id);
-    if (teams.length !== team_id.length) {
-      throw new NotFoundException('Some teams not found');
-    }
+    // const teams = await this.teamRepository.findByIds(team_id);
+    // if (teams.length !== team_id.length) {
+    //   throw new NotFoundException('Some teams not found');
+    // }
 
     // Cria a entidade do projeto e associa os times
     const project = this.projectRepository.create({
       name,
       description,
-      teams, // Associar os times ao projeto
+      // teams, // Associar os times ao projeto
       created_at: new Date(),
       updated_at: new Date(),
     });
