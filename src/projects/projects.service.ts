@@ -44,7 +44,7 @@ export class ProjectsService {
   async findOne(id: number): Promise<Project> {
     return this.projectRepository.findOne({
       where: { id },
-      relations: ['teams'],
+      relations: ['teams', 'models'],
     });
   }
 

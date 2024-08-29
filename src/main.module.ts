@@ -18,7 +18,7 @@ import { UsersModule } from './users/users.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: '',
       database: 'todolist',
       entities: [User, Team, Project, Model, Item],
       synchronize: false,
