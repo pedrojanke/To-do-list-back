@@ -20,6 +20,7 @@ import { UsersModule } from './users/users.module';
       url: process.env.DATABASE_URL,
       entities: [User, Team, Project, Model, Item],
       synchronize: true,
+      ssl: true,
     }),
     UsersModule,
     TeamsModule,
