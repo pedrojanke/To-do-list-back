@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Item } from './items/entities/item.entity';
 import { ItemsModule } from './items/items.module';
@@ -13,15 +14,12 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'todolist',
+      type: process.env.DATABASE_TYPE as any,
+      url: process.env.DATABASE_URL,
       entities: [User, Team, Project, Model, Item],
-      synchronize: false,
+      synchronize: true,
     }),
     UsersModule,
     TeamsModule,
