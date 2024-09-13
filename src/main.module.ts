@@ -16,8 +16,12 @@ import { UsersModule } from './users/users.module';
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: process.env.DATABASE_TYPE as any,
-      url: process.env.DATABASE_URL,
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'root',
+      database: 'todolist',
       entities: [User, Team, Project, Model, Item],
       synchronize: true,
       ssl: {
